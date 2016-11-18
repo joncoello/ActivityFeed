@@ -1,57 +1,88 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Bcl.Azure.ServiceBus;
+using Xunit;
 
 namespace Bcl.Azure.ServiceBusTests
 {
-    [TestClass]
     public class QueueClientTests
     {
-        [TestMethod]
+
+        private const string QUEUE_NAME = "emailmessagequeue";
+
+        [Fact]
         public void QueueClient_Create()
         {
-            var client = new QueueClient();
+            var client = new CCHQueueClient(QUEUE_NAME);
         }
 
-        [TestMethod]
+        [Fact]
         public void QueueClient_Enqueue()
         {
-            var client = new QueueClient();
-            client.Enqueue("blah");
+            var client = new CCHQueueClient(QUEUE_NAME);
+            var msg = new MockMessage();
+            client.Enqueue(msg);
         }
 
-        [TestMethod]
+        [Fact]
         public void QueueClient_Dequeue()
         {
-            var client = new QueueClient();
+            var client = new CCHQueueClient(QUEUE_NAME);
             var msg = client.Dequeue();
         }
 
-        [TestMethod]
+        [Fact]
         public void QueueClient_EnqueueAndDequeue()
         {
-            var client = new QueueClient();
+            var client = new CCHQueueClient("emailmessagequeue1");
+            client.ClearQueue();
 
-            client.Enqueue("blah");
+            var msg = new MockMessage();
+            client.Enqueue(msg);
 
-            var msg = client.Dequeue();
+            var msgOut = client.Dequeue();
 
-            Assert.AreEqual("blah", msg);
+            Assert.Equal(msgOut.MessageID, msg.MessageID);
 
         }
 
-        [TestMethod]
+        [Fact]
         public void QueueClient_EnqueueMultiAndDequeueFirst()
         {
-            var client = new QueueClient();
+            var client = new CCHQueueClient("emailmessagequeue2");
+            client.ClearQueue();
 
-            client.Enqueue("blah1");
-            client.Enqueue("blah2");
-            client.Enqueue("blah3");
+            var msg1 = new MockMessage();
+            var msg2 = new MockMessage();
+            var msg3 = new MockMessage();
+
+            client.Enqueue(msg1);
+            client.Enqueue(msg2);
+            client.Enqueue(msg3);
 
             var msg = client.Dequeue();
 
-            Assert.AreEqual("blah1", msg);
+            Assert.Equal(msg1.MessageID, msg.MessageID);
+        }
+
+        [Fact]
+        public void QueueClient_EnqueueObjectAndDequeue()
+        {
+
+            var msg = new MockMessage()
+            {
+                Description = "test"
+            };
+
+            var client = new CCHQueueClient("emailmessagequeue3");
+            client.ClearQueue();
+
+            client.Enqueue(msg);
+
+            var msgOut = (MockMessage)client.Dequeue();
+
+            Assert.Equal(msg.MessageID, msgOut.MessageID);
+            Assert.Equal(msg.Description, msgOut.Description);
+
         }
 
     }
