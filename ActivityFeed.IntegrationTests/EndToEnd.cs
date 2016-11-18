@@ -7,6 +7,7 @@ using ActivityFeed.DomainModel.Models;
 using ActivityFeed.ClientApi;
 using Microsoft.Owin.Hosting;
 using ActivityFeed.Api;
+using ActivityFeed.Messages;
 
 namespace ActivityFeed.IntegrationTests
 {
@@ -19,7 +20,7 @@ namespace ActivityFeed.IntegrationTests
 
             var client = new ActivityFeedClient();
 
-            var entry = new ActivityFeedEntry()
+            var entry = new CreateActivityFeedEntry()
             {
                 Title = "this is great",
                 Description = "blah blah blah"

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{24B6FD68-10CA-4385-9A3F-B9926547DC36}</ProjectGuid>
+    <ProjectGuid>{5C173882-219A-4781-982A-661CB371B357}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ActivityFeed.ClientApi</RootNamespace>
-    <AssemblyName>ActivityFeed.ClientApi</AssemblyName>
+    <RootNamespace>ActivityFeed.Messages</RootNamespace>
+    <AssemblyName>ActivityFeed.Messages</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,18 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivityFeedClient.cs" />
+    <Compile Include="CreateActivityFeedEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ActivityFeed.DomainModel\ActivityFeed.DomainModel.csproj">
-      <Project>{f174a372-98c8-473f-be87-6bcc8e7f823c}</Project>
-      <Name>ActivityFeed.DomainModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ActivityFeed.Messages\ActivityFeed.Messages.csproj">
-      <Project>{5c173882-219a-4781-982a-661cb371b357}</Project>
-      <Name>ActivityFeed.Messages</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Azure.ServiceBus.csproj">
       <Project>{659379ef-fdb8-4cb0-b497-eba9376cf140}</Project>
       <Name>Bcl.Azure.ServiceBus</Name>

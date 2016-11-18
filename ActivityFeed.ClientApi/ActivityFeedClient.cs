@@ -1,4 +1,6 @@
 ﻿using ActivityFeed.DomainModel.Models;
+using ActivityFeed.Messages;
+using Bcl.Azure.ServiceBus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,10 @@ namespace ActivityFeed.ClientApi
 {
     public class ActivityFeedClient
     {
-        public void CreateEntryAsync(ActivityFeedEntry entry)
+        public void CreateEntryAsync(CreateActivityFeedEntry entry)
         {
-            throw new NotImplementedException();
+            var queueClient = new CCHQueueClient("ActivityFeed");
+            queueClient.Enqueue(entry);
         }
     }
 }
