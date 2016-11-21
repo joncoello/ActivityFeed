@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Owin;
+using System.Web.Http;
 
-namespace ActivityFeed.Api
-{
+namespace ActivityFeed.Api {
     public class Startup
     {
+        public void Configuration(IAppBuilder app) {
+            var config = new HttpConfiguration();
+            config.MapHttpAttributeRoutes();
+            app.UseWebApi(config);
+        }
     }
 }

@@ -85,6 +85,16 @@ namespace Bcl.Azure.ServiceBusTests
 
         }
 
+        [Fact]
+        public void QueueClient_ClearAll() {
+            var client = new CCHQueueClient("activityfeed");
+            client.ClearQueue();
+            
+            var msgOut = client.Dequeue();
+
+            Assert.Null(msgOut);
+        }
+
     }
 
 }

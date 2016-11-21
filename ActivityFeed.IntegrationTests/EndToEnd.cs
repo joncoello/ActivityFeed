@@ -8,6 +8,7 @@ using ActivityFeed.ClientApi;
 using Microsoft.Owin.Hosting;
 using ActivityFeed.Api;
 using ActivityFeed.Messages;
+using Newtonsoft.Json;
 
 namespace ActivityFeed.IntegrationTests
 {
@@ -42,9 +43,9 @@ namespace ActivityFeed.IntegrationTests
 
                 var content = response.Content.ReadAsStringAsync().Result;
 
-                var activities = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ActivityFeedEntry>>(content);
+                var activities = JsonConvert.DeserializeObject<List<ActivityFeedEntry>>(content);
 
-                Assert.AreEqual(entry, activities[0]);
+                Assert.AreEqual(entry.Title, activities[0].Title);
 
             }
 
