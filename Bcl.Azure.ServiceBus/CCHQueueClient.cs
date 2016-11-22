@@ -46,15 +46,18 @@ namespace Bcl.Azure.ServiceBus
             }
         }
 
-        public void Enqueue(MessageBase message)
+        public async Task EnqueueAsync(MessageBase message)
         {
             var serialisedMessage = JsonConvert.SerializeObject(message);
-            _queueClient.Send(new BrokeredMessage(serialisedMessage));
+            await _queueClient.SendAsync(new BrokeredMessage(serialisedMessage));
         }
 
-        public MessageBase Dequeue()
+        public async Task<MessageBase> DequeueAsync()
         {
-            var bm = _queueClient.Receive();
+            var bm = await _queueClient.ReceiveAsync(TimeSpan.FromSeconds(2));
+
+            if (bm == null)
+                return null;
 
             var serialisedMessage = bm.GetBody<string>();
 
@@ -74,6 +77,21 @@ namespace Bcl.Azure.ServiceBus
             var message = (MessageBase)messageObject.ToObject(type);
             return message;
 
+        }
+
+        public async Task<List<MessageBase>> DequeueAll() {
+            bool moreMessages = true;
+            var messageList = new List<MessageBase>();
+            while(moreMessages) {
+                var message = await DequeueAsync();
+                if (message == null) {
+                    moreMessages = false;
+                    break;
+                }
+
+                messageList.Add(message);
+            }
+            return messageList;
         }
     }
 }
