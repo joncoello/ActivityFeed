@@ -2,28 +2,30 @@
 using Bcl.Azure.ServiceBus;
 using Xunit;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Bcl.Azure.ServiceBusTests {
     public class QueueClientTests : IDisposable
     {
-        private const string QUEUE_NAME_ACTIVITYFEED = "activityfeed";
-        private CCHQueueClient _client;
+        private const string QUEUE_NAME = "activityfeed";
+        private CCHQueueClient _sut;
 
         public QueueClientTests() {
-            _client = new CCHQueueClient(QUEUE_NAME_ACTIVITYFEED);
+            _sut = new CCHQueueClient(QUEUE_NAME);
         }
         
         [Fact]
+        [UseServiceBus]
         public async Task QueueClient_EnqueueAsync()
         {
             var msg = new MockMessage();
-            await _client.EnqueueAsync(msg);
+            await _sut.EnqueueAsync(msg);
         }
 
         [Fact]
-        public void QueueClient_DequeueAysncEmptyQueue()
+        public async Task QueueClient_DequeueAysncEmptyQueue()
         {
-            var msg = _client.DequeueAsync().Result;
+            var msg = await _sut.DequeueAsync(TimeSpan.FromSeconds(1));
             Assert.Null(msg);
         }
 
@@ -31,9 +33,9 @@ namespace Bcl.Azure.ServiceBusTests {
         public async Task QueueClient_EnqueueAndDequeue()
         {
             var msg = new MockMessage();
-            await _client.EnqueueAsync(msg);
+            await _sut.EnqueueAsync(msg);
 
-            var msgOut = _client.DequeueAsync().Result;
+            var msgOut = await _sut.DequeueAsync(TimeSpan.FromSeconds(1));
 
             Assert.Equal(msgOut.MessageID, msg.MessageID);
 
@@ -46,11 +48,11 @@ namespace Bcl.Azure.ServiceBusTests {
             var message2 = new MockMessage();
             var message3 = new MockMessage();
 
-            await _client.EnqueueAsync(message1);
-            await _client.EnqueueAsync(message2);
-            await _client.EnqueueAsync(message3);
+            await _sut.EnqueueAsync(message1);
+            await _sut.EnqueueAsync(message2);
+            await _sut.EnqueueAsync(message3);
 
-            var dequeuedMessage = _client.DequeueAsync().Result;
+            var dequeuedMessage = await _sut.DequeueAsync(TimeSpan.FromSeconds(1));
 
             Assert.Equal(message1.MessageID, dequeuedMessage.MessageID);
         }
@@ -63,9 +65,10 @@ namespace Bcl.Azure.ServiceBusTests {
                 Description = "test"
             };
 
-            await _client.EnqueueAsync(msg);
+            await _sut.EnqueueAsync(msg);
 
-            var dequeuedMessage = (MockMessage)_client.DequeueAsync().Result;
+            var dequeuedMessage = (MockMessage)await _sut.DequeueAsync(
+                TimeSpan.FromSeconds(1));
 
             Assert.Equal(msg.MessageID, dequeuedMessage.MessageID);
             Assert.Equal(msg.Description, dequeuedMessage.Description);
@@ -74,24 +77,27 @@ namespace Bcl.Azure.ServiceBusTests {
 
         [Fact]
         public async Task QueueClient_DequeueAllMessages() {
-            await _client.EnqueueAsync(new MockMessage { Description = "message1" });
-            await _client.EnqueueAsync(new MockMessage { Description = "message2" });
-            await _client.EnqueueAsync(new MockMessage { Description = "message3" });
+            var testMessages = new List<MockMessage> {
+                new MockMessage(),
+                new MockMessage(),
+                new MockMessage()
+            };
 
-            var messageList = await _client.DequeueAll();
-            var message0 = messageList[0] as MockMessage;
-            var message1 = messageList[1] as MockMessage;
-            var message2 = messageList[2] as MockMessage;
+            await _sut.EnqueueAsync(testMessages[0]);
+            await _sut.EnqueueAsync(testMessages[1]);
+            await _sut.EnqueueAsync(testMessages[2]);
+
+            var messageList = await _sut.DequeueAllAsync();
 
             Assert.NotNull(messageList);
             Assert.Equal(3, messageList.Count);
-            Assert.Equal("message1", message0.Description);
-            Assert.Equal("message2", message1.Description);
-            Assert.Equal("message3", message2.Description);
+            Assert.Equal(testMessages[0].MessageID, messageList[0].MessageID);
+            Assert.Equal(testMessages[1].MessageID, messageList[1].MessageID);
+            Assert.Equal(testMessages[2].MessageID, messageList[2].MessageID);
         }
 
-        public void Dispose() {
-            _client.ClearQueue();
+        public async void Dispose() {
+             await _sut.ClearQueueAsync();
         }
     }
 

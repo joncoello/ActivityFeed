@@ -9,7 +9,7 @@ namespace ActivityFeed.Api.Api {
     {
         public async Task<List<MessageBase>> Get() {
             var queueClient = new CCHQueueClient("ActivityFeed");
-            var messageList = await queueClient.DequeueAll();
+            var messageList = await queueClient.DequeueAllAsync();
             return messageList;
         }
     }

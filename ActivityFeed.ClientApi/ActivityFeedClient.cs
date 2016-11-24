@@ -11,10 +11,10 @@ namespace ActivityFeed.ClientApi
 {
     public class ActivityFeedClient
     {
-        public void CreateEntryAsync(CreateActivityFeedEntry entry)
+        public async Task CreateEntryAsync(CreateActivityFeedEntry entry)
         {
             var queueClient = new CCHQueueClient("ActivityFeed");
-            queueClient.EnqueueAsync(entry);
+            await queueClient.EnqueueAsync(entry);
         }
     }
 }

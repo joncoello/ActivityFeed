@@ -5,11 +5,9 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Bcl.Azure.ServiceBus
-{
+namespace Bcl.Azure.ServiceBus {
     public class CCHQueueClient
     {
 
@@ -19,7 +17,6 @@ namespace Bcl.Azure.ServiceBus
         public CCHQueueClient(string queueName)
         {
             string queueConnectionString = "Endpoint=sb://wkemailservicebus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=8/Du+d6qMBX96ZF+jAg0XB/zGoN1CoEq5ss481xIp9Y=";
-            //string queueName = "emailmessagequeue";
             _namespaceManager = NamespaceManager.CreateFromConnectionString(queueConnectionString);
             if (!_namespaceManager.QueueExists(queueName))
             {
@@ -35,15 +32,14 @@ namespace Bcl.Azure.ServiceBus
             _queueClient = QueueClient.CreateFromConnectionString(queueConnectionString, queueName, ReceiveMode.ReceiveAndDelete);
         }
 
-        public void ClearQueue() {
-            while (true)
-            {
-                var msg = _queueClient.Receive(TimeSpan.FromSeconds(1));
-                if (msg == null)
-                {
+        public async Task ClearQueueAsync() {
+            while (true) {
+                var msg = await _queueClient.ReceiveAsync(TimeSpan.FromSeconds(0));
+                if (msg == null) {
                     break;
                 }
             }
+
         }
 
         public async Task EnqueueAsync(MessageBase message)
@@ -52,9 +48,9 @@ namespace Bcl.Azure.ServiceBus
             await _queueClient.SendAsync(new BrokeredMessage(serialisedMessage));
         }
 
-        public async Task<MessageBase> DequeueAsync()
+        public async Task<MessageBase> DequeueAsync(TimeSpan serverWaitTime)
         {
-            var bm = await _queueClient.ReceiveAsync(TimeSpan.FromSeconds(2));
+            var bm = await _queueClient.ReceiveAsync(serverWaitTime);
 
             if (bm == null)
                 return null;
@@ -79,16 +75,13 @@ namespace Bcl.Azure.ServiceBus
 
         }
 
-        public async Task<List<MessageBase>> DequeueAll() {
-            bool moreMessages = true;
+        public async Task<List<MessageBase>> DequeueAllAsync() {
             var messageList = new List<MessageBase>();
-            while(moreMessages) {
-                var message = await DequeueAsync();
+            while(true) {
+                var message = await DequeueAsync(TimeSpan.FromSeconds(0));
                 if (message == null) {
-                    moreMessages = false;
                     break;
                 }
-
                 messageList.Add(message);
             }
             return messageList;
