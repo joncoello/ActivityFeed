@@ -11,7 +11,7 @@ namespace ActivityFeed.ClientApi
 {
     public class ActivityFeedClient
     {
-        public async Task CreateEntryAsync(CreateActivityFeedEntry entry)
+        public async Task CreateEntryAsync(MessageBase entry)
         {
             var queueClient = new CCHQueueClient("ActivityFeed");
             await queueClient.EnqueueAsync(entry);

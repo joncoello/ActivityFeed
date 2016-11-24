@@ -12,18 +12,16 @@ using Xunit;
 
 namespace ActivityFeed.IntegrationTests {
 
-    public class EndToEnd
+    public class EndToEnd 
     {
         [Fact]
         public async Task SendActivityToClientApiAndSeeActivityThroughAPI()
         {
             var client = new ActivityFeedClient();
-            var entry = new CreateActivityFeedEntry()
-            {
-                Title = "this is great",
-                Description = "blah blah blah"
+            var entry = new NewsActivityFeed {
+                Title = "News feed 1",
+                Description = "This is news feed 1"
             };
-
             await client.CreateEntryAsync(entry);
 
             var baseAddress = "http://localhost:6767";
@@ -34,8 +32,8 @@ namespace ActivityFeed.IntegrationTests {
                 var response = httpClient.GetAsync("/api/activities").Result;
                 var content = response.Content.ReadAsStringAsync().Result;
                 var activities = JsonConvert.DeserializeObject<List<ActivityFeedEntry>>(content);
-
-                Assert.Equal(entry.Title, activities[0].Title);
+                
+                Assert.Equal(1, activities.Count);
             }
         }
     }

@@ -15,7 +15,6 @@ namespace Bcl.Azure.ServiceBusTests {
         }
         
         [Fact]
-        [UseServiceBus]
         public async Task QueueClient_EnqueueAsync()
         {
             var msg = new MockMessage();
@@ -73,27 +72,6 @@ namespace Bcl.Azure.ServiceBusTests {
             Assert.Equal(msg.MessageID, dequeuedMessage.MessageID);
             Assert.Equal(msg.Description, dequeuedMessage.Description);
 
-        }
-
-        [Fact]
-        public async Task QueueClient_DequeueAllMessages() {
-            var testMessages = new List<MockMessage> {
-                new MockMessage(),
-                new MockMessage(),
-                new MockMessage()
-            };
-
-            await _sut.EnqueueAsync(testMessages[0]);
-            await _sut.EnqueueAsync(testMessages[1]);
-            await _sut.EnqueueAsync(testMessages[2]);
-
-            var messageList = await _sut.DequeueAllAsync();
-
-            Assert.NotNull(messageList);
-            Assert.Equal(3, messageList.Count);
-            Assert.Equal(testMessages[0].MessageID, messageList[0].MessageID);
-            Assert.Equal(testMessages[1].MessageID, messageList[1].MessageID);
-            Assert.Equal(testMessages[2].MessageID, messageList[2].MessageID);
         }
 
         public async void Dispose() {

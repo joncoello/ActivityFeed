@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityFeed.IntegrationTests", "ActivityFeed.IntegrationTests\ActivityFeed.IntegrationTests.csproj", "{6F79E958-DFF0-4341-B7D3-957903B3DFFD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55F9805A-8A28-4A08-9849-1F35B8332DDA} = {55F9805A-8A28-4A08-9849-1F35B8332DDA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityFeed.DomainModel", "ActivityFeed.DomainModel\ActivityFeed.DomainModel.csproj", "{F174A372-98C8-473F-BE87-6BCC8E7F823C}"
 EndProject

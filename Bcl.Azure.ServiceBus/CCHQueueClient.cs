@@ -74,17 +74,5 @@ namespace Bcl.Azure.ServiceBus {
             return message;
 
         }
-
-        public async Task<List<MessageBase>> DequeueAllAsync() {
-            var messageList = new List<MessageBase>();
-            while(true) {
-                var message = await DequeueAsync(TimeSpan.FromSeconds(0));
-                if (message == null) {
-                    break;
-                }
-                messageList.Add(message);
-            }
-            return messageList;
-        }
     }
 }
