@@ -1,14 +1,15 @@
 ﻿using Bcl.Azure.ServiceBus;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace ActivityFeed.Api.Api {
     [Route("api/activities")]
     public class ActivitiesController : ApiController
     {
-        public List<MessageBase> Get() {
+        public async Task<List<MessageBase>> Get() {
             var queueClient = new CCHQueueClient("ActivityFeed");
-            var messageList = queueClient.DequeueAll();
+            var messageList = await queueClient.DequeueAll();
             return messageList;
         }
     }

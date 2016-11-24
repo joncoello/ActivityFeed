@@ -2,47 +2,38 @@
 using Bcl.Azure.ServiceBus;
 using Xunit;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
-namespace Bcl.Azure.ServiceBusTests
-{
-    public class QueueClientTests
+namespace Bcl.Azure.ServiceBusTests {
+    public class QueueClientTests : IDisposable
     {
+        private const string QUEUE_NAME_ACTIVITYFEED = "activityfeed";
+        private CCHQueueClient _client;
 
-        private const string QUEUE_NAME = "emailmessagequeue";
-
-        [Fact]
-        public void QueueClient_Create()
-        {
-            var client = new CCHQueueClient(QUEUE_NAME);
+        public QueueClientTests() {
+            _client = new CCHQueueClient(QUEUE_NAME_ACTIVITYFEED);
         }
-
+        
         [Fact]
         public async Task QueueClient_EnqueueAsync()
         {
-            var client = new CCHQueueClient(QUEUE_NAME);
             var msg = new MockMessage();
-            await client.EnqueueAsync(msg);
+            await _client.EnqueueAsync(msg);
         }
 
         [Fact]
         public void QueueClient_DequeueAysncEmptyQueue()
         {
-            var client = new CCHQueueClient(QUEUE_NAME);
-            var msg = client.DequeueAsync().Result;
+            var msg = _client.DequeueAsync().Result;
             Assert.Null(msg);
         }
 
         [Fact]
         public async Task QueueClient_EnqueueAndDequeue()
         {
-            var client = new CCHQueueClient("emailmessagequeue1");
-            client.ClearQueue();
-
             var msg = new MockMessage();
-            await client.EnqueueAsync(msg);
+            await _client.EnqueueAsync(msg);
 
-            var msgOut = client.DequeueAsync().Result;
+            var msgOut = _client.DequeueAsync().Result;
 
             Assert.Equal(msgOut.MessageID, msg.MessageID);
 
@@ -51,76 +42,57 @@ namespace Bcl.Azure.ServiceBusTests
         [Fact]
         public async Task QueueClient_EnqueueMultiAndDequeueFirst()
         {
-            var client = new CCHQueueClient("emailmessagequeue2");
-            client.ClearQueue();
+            var message1 = new MockMessage();
+            var message2 = new MockMessage();
+            var message3 = new MockMessage();
 
-            var msg1 = new MockMessage();
-            var msg2 = new MockMessage();
-            var msg3 = new MockMessage();
+            await _client.EnqueueAsync(message1);
+            await _client.EnqueueAsync(message2);
+            await _client.EnqueueAsync(message3);
 
-            await client.EnqueueAsync(msg1);
-            await client.EnqueueAsync(msg2);
-            await client.EnqueueAsync(msg3);
+            var dequeuedMessage = _client.DequeueAsync().Result;
 
-            var msg = client.DequeueAsync().Result;
-
-            Assert.Equal(msg1.MessageID, msg.MessageID);
+            Assert.Equal(message1.MessageID, dequeuedMessage.MessageID);
         }
 
         [Fact]
         public async Task QueueClient_EnqueueObjectAndDequeue()
         {
-
             var msg = new MockMessage()
             {
                 Description = "test"
             };
 
-            var client = new CCHQueueClient("emailmessagequeue3");
-            client.ClearQueue();
+            await _client.EnqueueAsync(msg);
 
-            await client.EnqueueAsync(msg);
+            var dequeuedMessage = (MockMessage)_client.DequeueAsync().Result;
 
-            var msgOut = (MockMessage)client.DequeueAsync().Result;
-
-            Assert.Equal(msg.MessageID, msgOut.MessageID);
-            Assert.Equal(msg.Description, msgOut.Description);
+            Assert.Equal(msg.MessageID, dequeuedMessage.MessageID);
+            Assert.Equal(msg.Description, dequeuedMessage.Description);
 
         }
 
-        [Fact]
-        public void QueueClient_ClearAll() {
-            var client = new CCHQueueClient("activityfeed");
-            client.ClearQueue();
-
-            client = new CCHQueueClient("emailmessagequeue");
-            client.ClearQueue();
-
-            client = new CCHQueueClient("emailmessagequeue2");
-            client.ClearQueue();
-
-            client = new CCHQueueClient("emailmessagequeue3");
-            client.ClearQueue();
-        }
         [Fact]
         public async Task QueueClient_DequeueAllMessages() {
-            var client = new CCHQueueClient("activityfeed");
-            await client.EnqueueAsync(new MockMessage { Description = "cool1" });
-            await client.EnqueueAsync(new MockMessage { Description = "cool2" });
-            await client.EnqueueAsync(new MockMessage { Description = "cool3" });
+            await _client.EnqueueAsync(new MockMessage { Description = "message1" });
+            await _client.EnqueueAsync(new MockMessage { Description = "message2" });
+            await _client.EnqueueAsync(new MockMessage { Description = "message3" });
 
-            var messageList = await client.DequeueAll();
+            var messageList = await _client.DequeueAll();
             var message0 = messageList[0] as MockMessage;
             var message1 = messageList[1] as MockMessage;
             var message2 = messageList[2] as MockMessage;
 
             Assert.NotNull(messageList);
             Assert.Equal(3, messageList.Count);
-            Assert.Equal("cool1", message0.Description);
-            Assert.Equal("cool2", message1.Description);
-            Assert.Equal("cool3", message2.Description);
+            Assert.Equal("message1", message0.Description);
+            Assert.Equal("message2", message1.Description);
+            Assert.Equal("message3", message2.Description);
         }
 
+        public void Dispose() {
+            _client.ClearQueue();
+        }
     }
 
 }
