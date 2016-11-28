@@ -39,6 +39,7 @@ namespace ActivityFeed.IntegrationTests
                 httpClient.BaseAddress = new Uri(baseAddress);
 
                 var response = httpClient.GetAsync("/api/activities").Result;
+                response.EnsureSuccessStatusCode();
 
                 var content = response.Content.ReadAsStringAsync().Result;
 

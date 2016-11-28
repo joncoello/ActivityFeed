@@ -14,22 +14,7 @@ namespace Bcl.Azure.ServiceBusTests
         {
             var client = new CCHQueueClient(QUEUE_NAME);
         }
-
-        [Fact]
-        public void QueueClient_Enqueue()
-        {
-            var client = new CCHQueueClient(QUEUE_NAME);
-            var msg = new MockMessage();
-            client.Enqueue(msg);
-        }
-
-        [Fact]
-        public void QueueClient_Dequeue()
-        {
-            var client = new CCHQueueClient(QUEUE_NAME);
-            var msg = client.Dequeue();
-        }
-
+        
         [Fact]
         public void QueueClient_EnqueueAndDequeue()
         {
