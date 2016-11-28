@@ -22,7 +22,7 @@ namespace ActivityFeed.IntegrationTests {
                 Title = "News feed 1",
                 Description = "This is news feed 1"
             };
-            await client.CreateEntryAsync(entry);
+            await client.SendAsync(entry);
 
             var baseAddress = "http://localhost:6767";
             using (WebApp.Start<Startup>(baseAddress))

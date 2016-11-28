@@ -96,6 +96,10 @@
       <Project>{24B6FD68-10CA-4385-9A3F-B9926547DC36}</Project>
       <Name>ActivityFeed.ClientApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ActivityFeed.Repositories\Bcl.Azure.Storage.csproj">
+      <Project>{B8A5A47C-E936-4561-B801-78B3350E7FF8}</Project>
+      <Name>Bcl.Azure.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Azure.ServiceBus.csproj">
       <Project>{659379ef-fdb8-4cb0-b497-eba9376cf140}</Project>
       <Name>Bcl.Azure.ServiceBus</Name>

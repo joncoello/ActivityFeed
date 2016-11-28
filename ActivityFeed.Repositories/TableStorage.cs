@@ -2,6 +2,7 @@
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
+using System.Collections.Generic;
 
 namespace Bcl.Azure.Storage {
     public class TableStorage {
@@ -16,6 +17,17 @@ namespace Bcl.Azure.Storage {
             _table.Execute(insertOperation);
         }
 
+        public void Delete(BaseEntity entity) {
+            TableOperation deleteOperation = TableOperation.Delete(entity);
+            _table.Execute(deleteOperation);
+        }
+
+        public IEnumerable<BaseEntity> Retrieve() {
+                var tableQuery = new TableQuery<BaseEntity>();
+                var entities = _table.ExecuteQuery(tableQuery);
+                return entities;
+        }
+
         private void Create() {
             try {
                 StorageCredentials creds = new StorageCredentials(
@@ -28,11 +40,9 @@ namespace Bcl.Azure.Storage {
 
                 _table = client.GetTableReference("Fakes");
                 _table.CreateIfNotExists();
-
-                Console.WriteLine(_table.Uri.ToString());
             }
             catch (Exception ex) {
-                Console.WriteLine(ex);
+                throw ex;
             }
         }
 

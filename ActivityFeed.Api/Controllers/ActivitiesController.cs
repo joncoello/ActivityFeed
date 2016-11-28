@@ -10,7 +10,7 @@ namespace ActivityFeed.Api.Api {
     {
         public async Task<List<MessageBase>> Get() {
             //ToDo: Remove code to get message from queueclient
-            //TODo: get from activity store (database, table store, etc)?
+            //TODo: get from table storage?
             var queueClient = new CCHQueueClient("ActivityFeed");
             var message = await queueClient.DequeueAsync(TimeSpan.FromSeconds(0));
             

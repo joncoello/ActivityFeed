@@ -17,17 +17,7 @@ namespace ActivityFeed.ClientApi.IntegrationTests {
                 Title = "Test news activity",
                 Description = "Test news description"
             };
-            await _sut.CreateEntryAsync(message);
-
-            var receivedMessage = await _sut.ReceiveMessageAsync(TimeSpan.FromSeconds(0));
-
-            Assert.Equal(message.MessageID, receivedMessage.MessageID);
-        }
-
-        [Fact]
-        public async Task DequeueEmptyReturnsNull() {
-            var receivedMessage = await _sut.ReceiveMessageAsync(TimeSpan.FromSeconds(0));
-            Assert.Null(receivedMessage);
+            await _sut.SendAsync(message);
         }
     }
 }

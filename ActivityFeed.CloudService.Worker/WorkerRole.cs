@@ -1,28 +1,30 @@
 ﻿using System;
 using Microsoft.WindowsAzure.ServiceRuntime;
-using ActivityFeed.ClientApi;
-
+using Bcl.Azure.ServiceBus;
+using Bcl.Azure.Storage;
 
 namespace ActivityFeed.CloudService.Worker {
     public class WorkerRole : RoleEntryPoint {
-        private ActivityFeedClient _activityFeedClient;
-        //private ;
+        private CCHQueueClient _queueClient;
         private const double ServerWaitTimeInSeconds = 5;
         public WorkerRole() {
             //ToDo: IoC 
-            _activityFeedClient = new ActivityFeedClient();
+            _queueClient = new CCHQueueClient("ActivityFeed");
         }
         public override async void Run() {
             while (true) {
-                var message = await _activityFeedClient.ReceiveMessageAsync(
+                var message = await _queueClient.DequeueAsync(
                     TimeSpan.FromSeconds(ServerWaitTimeInSeconds));
 
                 if (message == null)
                     continue;
 
                 // get Message handler
+                // call message handler's handle oto handle message and add to the table storage
 
-                // call message handler's handle
+                //temporary - could do this 
+                //var storage = new TableStorage();
+                //storage.Add(message);
             }
         }
 
