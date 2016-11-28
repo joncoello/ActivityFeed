@@ -16,5 +16,10 @@ namespace ActivityFeed.ClientApi
             var queueClient = new CCHQueueClient("ActivityFeed");
             await queueClient.EnqueueAsync(entry);
         }
+
+        public async Task<MessageBase> ReceiveMessageAsync(TimeSpan serverWaitTime) {
+            var queueClient = new CCHQueueClient("ActivityFeed");
+            return await queueClient.DequeueAsync(serverWaitTime);
+        }
     }
 }
