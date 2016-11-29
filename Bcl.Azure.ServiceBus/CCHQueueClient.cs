@@ -64,15 +64,20 @@ namespace Bcl.Azure.ServiceBus {
             // by on using the short name of the type we can serialise and deserialise
             // from and to different types as long as members match
             // we just find the first type in the current appdomain with the same name
-            var type =
-                AppDomain.CurrentDomain.GetAssemblies() // get all load assemblies
-                .Select(a => a.GetTypes() // get all types
-                .FirstOrDefault(t => t.Name == typeName)) // get matching names
-                .FirstOrDefault(t => t != null); // get first where one exists
+            try {
+                var type =
+                       AppDomain.CurrentDomain.GetAssemblies() // get all load assemblies
+                       .Select(a => a.GetTypes() // get all types
+                       .FirstOrDefault(t => t.Name == typeName)) // get matching names
+                       .FirstOrDefault(t => t != null); // get first where one exists
 
-            var message = (MessageBase)messageObject.ToObject(type);
-            return message;
-
+                var message = (MessageBase)messageObject.ToObject(type);
+                return message;
+            }
+            catch (ArgumentNullException e) {
+                throw new ArgumentNullException(
+                    $"Type - {messageObject["TypeName"]} not found in currentDomain.", e.InnerException);
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Bcl.Azure.Storage {
@@ -12,20 +13,20 @@ namespace Bcl.Azure.Storage {
             Create();
         }
 
-        public void Add(BaseEntity entity) {
+        public void Add(TableEntity entity) {
             TableOperation insertOperation = TableOperation.Insert(entity);
             _table.Execute(insertOperation);
         }
 
-        public void Delete(BaseEntity entity) {
+        public void Delete(TableEntity entity) {
             TableOperation deleteOperation = TableOperation.Delete(entity);
             _table.Execute(deleteOperation);
         }
 
-        public IEnumerable<BaseEntity> Retrieve() {
-                var tableQuery = new TableQuery<BaseEntity>();
-                var entities = _table.ExecuteQuery(tableQuery);
-                return entities;
+        public IEnumerable<TableEntity> Retrieve() {
+            var tableQuery = new TableQuery<TableEntity>();
+            var entities = _table.ExecuteQuery(tableQuery);
+            return entities;
         }
 
         private void Create() {

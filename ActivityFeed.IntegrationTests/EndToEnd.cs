@@ -9,6 +9,7 @@ using ActivityFeed.Messages;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Xunit;
+using System.Diagnostics;
 
 namespace ActivityFeed.IntegrationTests {
 
@@ -23,6 +24,10 @@ namespace ActivityFeed.IntegrationTests {
                 Description = "This is news feed 1"
             };
             await client.SendAsync(entry);
+
+            var p = Process.Start("ActivityFeed.Console.exe", "-exitNoMessage");
+            p.WaitForExit();
+            
 
             var baseAddress = "http://localhost:6767";
             using (WebApp.Start<Startup>(baseAddress))
