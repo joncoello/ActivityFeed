@@ -18,6 +18,8 @@ namespace ActivityFeed.DomainModel.Handlers {
             var activityFeedEntry = new ActivityFeedEntry(
                 message.GetType().Name,
                 message.MessageID.ToString()) {
+                Title = message.Title,
+                Description = message.Description
             };
 
             var storage = new TableStorage();

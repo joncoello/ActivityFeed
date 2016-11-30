@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Storage.Table;
+using System;
 using System.Linq;
 using System.Threading;
 using Xunit;
@@ -6,7 +7,7 @@ using Xunit;
 namespace Bcl.Azure.Storage.IntegrationTests {
     public class TableStorageTests : IDisposable
     {
-        private BaseEntity _entity;
+        private TableEntity _entity;
         private TableStorage _sut;
         public TableStorageTests() {
             _sut = new TableStorage();
@@ -29,7 +30,7 @@ namespace Bcl.Azure.Storage.IntegrationTests {
         }
     }
 
-    public class FakeEntity : BaseEntity {
+    public class FakeEntity : TableEntity {
         public FakeEntity(string partitionKey, string rowKey) 
             : base(partitionKey, rowKey) { }
 

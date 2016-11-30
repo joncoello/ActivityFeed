@@ -6,7 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 namespace Bcl.Azure.Storage {
-    public class TableStorage {
+    public class TableStorage<T> {
         private CloudTable _table;
 
         public TableStorage() {

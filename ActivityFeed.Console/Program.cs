@@ -56,16 +56,7 @@ namespace ActivityFeed.Console {
 
                     handler.Handle(message);
 
-                    //temporary - could do this 
-                   
-                    //var activityFeedEntry = new ActivityFeedEntry(
-                    //    message.GetType().Name,
-                    //    message.MessageID.ToString()) {
-
-                    //};
-
-                    //var storage = new TableStorage();
-                    //storage.Add(activityFeedEntry);
+                    
                 }
             }).Wait();
 
