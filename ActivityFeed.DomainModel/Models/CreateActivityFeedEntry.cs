@@ -5,5 +5,7 @@ namespace ActivityFeed.Domain.Models {
     {
         public string Description { get; set; }
         public string Title { get; set; }
+
+        public string LongDescription { get; set; }
     }
 }

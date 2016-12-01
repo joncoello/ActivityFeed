@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\CreateActivityFeedEntryHandler.cs" />
     <Compile Include="Handlers\MessageHandler.cs" />
     <Compile Include="Handlers\NewsFeedMessageHandler.cs" />
     <Compile Include="Handlers\IHandler.cs" />

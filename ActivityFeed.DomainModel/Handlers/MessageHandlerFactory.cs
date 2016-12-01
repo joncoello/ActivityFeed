@@ -15,9 +15,14 @@ namespace ActivityFeed.Domain.Handlers {
                                     t => t == message.GetType()));
                 instance = Activator.CreateInstance(consumer) as IHandler;
             }
-            catch (NullReferenceException e) {
-                throw new NullReferenceException
-                    (string.Format("No handler found for type {0}", 
+            catch (ArgumentNullException e) {
+                throw new ArgumentNullException
+                    (string.Format("No handler found for type {0}",
+                     message.GetType()), e);
+            }
+            catch (ArgumentException e) {
+                throw new ArgumentException
+                    (string.Format("Invalid argument passed to create message handler",
                      message.GetType()), e);
             }
 
@@ -30,12 +35,12 @@ namespace ActivityFeed.Domain.Handlers {
             foreach (var assembly in assemblies) {
                 try {
                     var types = assembly.GetExportedTypes()
-                        .Where(x => x.BaseType != null && x.GetType() == type && x.BaseType.GetInterfaces()
+                        .Where(x => x.BaseType != null && x.BaseType.GetInterfaces()
                         .Any(a => a == typeof(IHandler)));
 
                     listOfTypes.AddRange(types);
                 }
-                catch (Exception e) {
+                catch (Exception) {
                     continue;
                 }
             }

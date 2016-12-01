@@ -15,8 +15,10 @@ namespace ActivityFeed.Console {
         {
             //ToDo
             // load type into app domain - replace with MEF
-            var msg = new NewsActivityFeed();
-            Debugger.Launch();
+            var msg1 = new NewsActivityFeed();
+            var msg2 = new CreateActivityFeedEntry();
+
+            //Debugger.Launch();
             //IoC
             _queueClient = new CCHQueueClient("ActivityFeed");
             Task.Run(async () => {
@@ -44,14 +46,14 @@ namespace ActivityFeed.Console {
                                         .GetHandler(message);
                         handler.Handle(message);
                     }
-                    catch (NullReferenceException e) {
-                        //ToDo
-                        // could introduce transient custom user exception
-                        // to handle exception and action the message
-                        // dead letter???
-                        // log it
-                        // move on
-                    }
+                    //ToDo
+                    // could introduce transient custom user exception
+                    // to handle exception and action the message
+                    // dead letter???
+                    // log it
+                    // move on
+                    catch (ArgumentNullException) {}
+                    catch (ArgumentException) {}
                 }
             }).Wait();
         }
