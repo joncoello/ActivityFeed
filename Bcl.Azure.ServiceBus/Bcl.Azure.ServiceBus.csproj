@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CCHQueueClient.cs" />
+    <Compile Include="IQueue.cs" />
     <Compile Include="MessageBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

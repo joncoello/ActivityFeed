@@ -1,8 +1,6 @@
-﻿using ActivityFeed.DomainModel.Handlers;
-using ActivityFeed.DomainModel.Models;
+﻿using ActivityFeed.Domain.Handlers;
+using ActivityFeed.Domain.Models;
 using Bcl.Azure.ServiceBus;
-using Bcl.Azure.Storage;
-using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -10,20 +8,16 @@ using System.Threading.Tasks;
 namespace ActivityFeed.Console {
     public class Program
     {
-
-        private static CCHQueueClient _queueClient;
+        private static IQueue _queueClient;
         private const double ServerWaitTimeInSeconds = 5;
 
-        
         public static void Main(string[] args)
         {
-
+            //ToDo
             // load type into app domain - replace with MEF
-            var msg = new ActivityFeed.Messages.NewsActivityFeed();
-
-
+            var msg = new NewsActivityFeed();
             Debugger.Launch();
-
+            //IoC
             _queueClient = new CCHQueueClient("ActivityFeed");
             Task.Run(async () => {
                 MessageBase message = null;
@@ -33,7 +27,6 @@ namespace ActivityFeed.Console {
                                         TimeSpan.FromSeconds(ServerWaitTimeInSeconds));
                     }
                     catch (ArgumentNullException e) {
-
                         //log error
                         continue;
                     }
@@ -46,21 +39,21 @@ namespace ActivityFeed.Console {
                         continue;
                     }
 
-
-
-                    // get Message handler
-                    // call message handler's handle oto handle message and add to the table storage
-
-                    var handler = new MessageHandlerFactory()
-                        .GetHandler(message);
-
-                    handler.Handle(message);
-
-                    
+                    try {
+                        var handler = new MessageHandlerFactory()
+                                        .GetHandler(message);
+                        handler.Handle(message);
+                    }
+                    catch (NullReferenceException e) {
+                        //ToDo
+                        // could introduce transient custom user exception
+                        // to handle exception and action the message
+                        // dead letter???
+                        // log it
+                        // move on
+                    }
                 }
             }).Wait();
-
         }
-
     }
 }

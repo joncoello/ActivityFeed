@@ -7,8 +7,8 @@
     <ProjectGuid>{F174A372-98C8-473F-BE87-6BCC8E7F823C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ActivityFeed.DomainModel</RootNamespace>
-    <AssemblyName>ActivityFeed.DomainModel</AssemblyName>
+    <RootNamespace>ActivityFeed.Domain</RootNamespace>
+    <AssemblyName>ActivityFeed.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -65,21 +65,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\MessageHandler.cs" />
     <Compile Include="Handlers\NewsFeedMessageHandler.cs" />
     <Compile Include="Handlers\IHandler.cs" />
     <Compile Include="Handlers\MessageHandlerFactory.cs" />
     <Compile Include="Models\ActivityFeedEntry.cs" />
-    <Compile Include="Models\ActivityFeedService.cs" />
+    <Compile Include="Services\ActivityFeedService.cs" />
+    <Compile Include="Models\CreateActivityFeedEntry.cs" />
+    <Compile Include="Models\NewsActivityFeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ActivityFeed.Messages\ActivityFeed.Messages.csproj">
-      <Project>{5C173882-219A-4781-982A-661CB371B357}</Project>
-      <Name>ActivityFeed.Messages</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ActivityFeed.Repositories\Bcl.Azure.Storage.csproj">
       <Project>{B8A5A47C-E936-4561-B801-78B3350E7FF8}</Project>
       <Name>Bcl.Azure.Storage</Name>

@@ -6,30 +6,30 @@ using System.Linq;
 using System.Collections.Generic;
 
 namespace Bcl.Azure.Storage {
-    public class TableStorage<T> {
+    public class TableStorage : IStorage {
         private CloudTable _table;
 
         public TableStorage() {
             Create();
         }
 
-        public void Add(TableEntity entity) {
+        public void Add<T>(T entity) where T : BaseEntity{
             TableOperation insertOperation = TableOperation.Insert(entity);
             _table.Execute(insertOperation);
         }
 
-        public void Delete(TableEntity entity) {
+        public void Delete<T>(T entity) where T : BaseEntity {
             TableOperation deleteOperation = TableOperation.Delete(entity);
             _table.Execute(deleteOperation);
         }
 
-        public IEnumerable<TableEntity> Retrieve() {
-            var tableQuery = new TableQuery<TableEntity>();
+        public IEnumerable<T> Retrieve<T>() where T : BaseEntity, new() {
+            var tableQuery = new TableQuery<T>();
             var entities = _table.ExecuteQuery(tableQuery);
             return entities;
         }
 
-        private void Create() {
+        protected virtual void Create() {
             try {
                 StorageCredentials creds = new StorageCredentials(
                     "tablestoragecch",
@@ -47,6 +47,6 @@ namespace Bcl.Azure.Storage {
             }
         }
 
-
+       
     }
 }

@@ -1,19 +1,17 @@
-﻿using System;
-using ActivityFeed.DomainModel.Models;
-using ActivityFeed.Messages;
+﻿using ActivityFeed.Domain.Models;
 using Bcl.Azure.Storage;
 
-namespace ActivityFeed.DomainModel.Handlers {
+namespace ActivityFeed.Domain.Handlers {
     public class NewsFeedMessageHandler : MessageHandler<NewsActivityFeed> {
-        //public override void Handle(NewsActivityFeed message) {
-        //    var activityFeedEntry = new ActivityFeedEntry(
-        //        message.GetType().Name,
-        //        message.MessageID.ToString()) {
-        //    };
+        private IStorage _storage;
 
-        //    var storage = new TableStorage();
-        //    storage.Add(activityFeedEntry);
-        //}
+        public NewsFeedMessageHandler() {
+            _storage = new TableStorage();
+        }
+
+        public NewsFeedMessageHandler(IStorage storage) {
+            _storage = storage;
+        }
         public override void Handle(NewsActivityFeed message) {
             var activityFeedEntry = new ActivityFeedEntry(
                 message.GetType().Name,
@@ -22,8 +20,7 @@ namespace ActivityFeed.DomainModel.Handlers {
                 Description = message.Description
             };
 
-            var storage = new TableStorage();
-            storage.Add(activityFeedEntry);
+            _storage.Add(activityFeedEntry);
         }
     }
 }

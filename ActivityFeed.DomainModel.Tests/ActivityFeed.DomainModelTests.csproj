@@ -67,13 +67,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ActivityFeed.DomainModel\ActivityFeed.DomainModel.csproj">
+    <ProjectReference Include="..\ActivityFeed.DomainModel\ActivityFeed.Domain.csproj">
       <Project>{F174A372-98C8-473F-BE87-6BCC8E7F823C}</Project>
-      <Name>ActivityFeed.DomainModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ActivityFeed.Messages\ActivityFeed.Messages.csproj">
-      <Project>{5C173882-219A-4781-982A-661CB371B357}</Project>
-      <Name>ActivityFeed.Messages</Name>
+      <Name>ActivityFeed.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Azure.ServiceBus.csproj">
       <Project>{659379EF-FDB8-4CB0-B497-EBA9376CF140}</Project>

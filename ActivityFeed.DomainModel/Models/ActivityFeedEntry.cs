@@ -1,7 +1,7 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
+﻿using Bcl.Azure.Storage;
 
-namespace ActivityFeed.DomainModel.Models {
-    public class ActivityFeedEntry : TableEntity
+namespace ActivityFeed.Domain.Models {
+    public class ActivityFeedEntry : BaseEntity
     {
 
         public ActivityFeedEntry(string partitionKey, string rowKey)

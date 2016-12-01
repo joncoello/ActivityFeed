@@ -1,5 +1,5 @@
-﻿using ActivityFeed.DomainModel.Handlers;
-using ActivityFeed.Messages;
+﻿using ActivityFeed.Domain.Handlers;
+using ActivityFeed.Domain.Models;
 using Xunit;
 
 namespace ActivityFeed.DomainModel.Tests {

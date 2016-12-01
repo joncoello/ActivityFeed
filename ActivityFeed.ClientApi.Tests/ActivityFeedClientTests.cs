@@ -1,5 +1,4 @@
-﻿using ActivityFeed.Messages;
-using System;
+﻿using ActivityFeed.Domain.Models;
 using System.Threading.Tasks;
 using Xunit;
 

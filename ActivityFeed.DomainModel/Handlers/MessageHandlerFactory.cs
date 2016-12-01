@@ -2,10 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ActivityFeed.DomainModel.Handlers {
+namespace ActivityFeed.Domain.Handlers {
     public class MessageHandlerFactory {
 
         public IHandler GetHandler(MessageBase message) {
@@ -17,8 +15,10 @@ namespace ActivityFeed.DomainModel.Handlers {
                                     t => t == message.GetType()));
                 instance = Activator.CreateInstance(consumer) as IHandler;
             }
-            catch (Exception e) {
-                instance = null;
+            catch (NullReferenceException e) {
+                throw new NullReferenceException
+                    (string.Format("No handler found for type {0}", 
+                     message.GetType()), e);
             }
 
             return instance;
@@ -30,7 +30,7 @@ namespace ActivityFeed.DomainModel.Handlers {
             foreach (var assembly in assemblies) {
                 try {
                     var types = assembly.GetExportedTypes()
-                        .Where(x => x.BaseType != null && x.BaseType.GetInterfaces()
+                        .Where(x => x.BaseType != null && x.GetType() == type && x.BaseType.GetInterfaces()
                         .Any(a => a == typeof(IHandler)));
 
                     listOfTypes.AddRange(types);

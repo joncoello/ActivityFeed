@@ -44,14 +44,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ActivityFeed.DomainModel\ActivityFeed.DomainModel.csproj">
-      <Project>{f174a372-98c8-473f-be87-6bcc8e7f823c}</Project>
-      <Name>ActivityFeed.DomainModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ActivityFeed.Messages\ActivityFeed.Messages.csproj">
-      <Project>{5c173882-219a-4781-982a-661cb371b357}</Project>
-      <Name>ActivityFeed.Messages</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Azure.ServiceBus.csproj">
       <Project>{659379ef-fdb8-4cb0-b497-eba9376cf140}</Project>
       <Name>Bcl.Azure.ServiceBus</Name>

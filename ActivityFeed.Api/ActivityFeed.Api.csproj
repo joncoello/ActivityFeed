@@ -60,10 +60,6 @@
       <HintPath>..\packages\Microsoft.Owin.Hosting.2.0.2\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=7.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ActivityFeed.DomainModel\bin\Debug\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -132,21 +128,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ActivityFeed.ClientApi\ActivityFeed.ClientApi.csproj">
-      <Project>{24B6FD68-10CA-4385-9A3F-B9926547DC36}</Project>
-      <Name>ActivityFeed.ClientApi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ActivityFeed.DomainModel\ActivityFeed.DomainModel.csproj">
+    <ProjectReference Include="..\ActivityFeed.DomainModel\ActivityFeed.Domain.csproj">
       <Project>{F174A372-98C8-473F-BE87-6BCC8E7F823C}</Project>
-      <Name>ActivityFeed.DomainModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ActivityFeed.Repositories\Bcl.Azure.Storage.csproj">
-      <Project>{B8A5A47C-E936-4561-B801-78B3350E7FF8}</Project>
-      <Name>Bcl.Azure.Storage</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Azure.ServiceBus.csproj">
-      <Project>{659379EF-FDB8-4CB0-B497-EBA9376CF140}</Project>
-      <Name>Bcl.Azure.ServiceBus</Name>
+      <Name>ActivityFeed.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

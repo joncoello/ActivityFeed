@@ -3,13 +3,11 @@ using Microsoft.ServiceBus.Messaging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Bcl.Azure.ServiceBus {
-    public class CCHQueueClient
-    {
+    public class CCHQueueClient : IQueue {
 
         private QueueClient _queueClient;
         private NamespaceManager _namespaceManager;
