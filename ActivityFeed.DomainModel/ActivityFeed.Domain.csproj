@@ -67,13 +67,13 @@
   <ItemGroup>
     <Compile Include="Handlers\CreateActivityFeedEntryHandler.cs" />
     <Compile Include="Handlers\MessageHandler.cs" />
-    <Compile Include="Handlers\NewsFeedMessageHandler.cs" />
     <Compile Include="Handlers\IHandler.cs" />
     <Compile Include="Handlers\MessageHandlerFactory.cs" />
+    <Compile Include="Messages\DeleteActivityFeed.cs" />
+    <Compile Include="Messages\UpdateActivityFeed.cs" />
     <Compile Include="Models\ActivityFeedEntry.cs" />
     <Compile Include="Services\ActivityFeedService.cs" />
-    <Compile Include="Models\CreateActivityFeedEntry.cs" />
-    <Compile Include="Models\NewsActivityFeed.cs" />
+    <Compile Include="Messages\CreateActivityFeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,9 +84,9 @@
       <Project>{B8A5A47C-E936-4561-B801-78B3350E7FF8}</Project>
       <Name>Bcl.Azure.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Azure.ServiceBus.csproj">
+    <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Messaging.csproj">
       <Project>{659379EF-FDB8-4CB0-B497-EBA9376CF140}</Project>
-      <Name>Bcl.Azure.ServiceBus</Name>
+      <Name>Bcl.Messaging</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

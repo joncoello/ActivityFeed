@@ -1,4 +1,4 @@
-﻿using ActivityFeed.Domain.Models;
+﻿using ActivityFeed.Domain.Messages;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -12,9 +12,9 @@ namespace ActivityFeed.ClientApi.IntegrationTests {
 
         [Fact]
         public async Task EnqueueAndDequeue() {
-            var message = new NewsActivityFeed {
-                Title = "Test news activity",
-                Description = "Test news description"
+            var message = new CreateActivityFeed {
+                Title = "Test activity",
+                Description = "Test description"
             };
             await _sut.SendAsync(message);
         }

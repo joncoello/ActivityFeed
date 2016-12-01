@@ -69,7 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="CreateActivityFeed.cs" />
     <Compile Include="IStorage.cs" />
+    <Compile Include="IStorageRepository.cs" />
     <Compile Include="TableStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

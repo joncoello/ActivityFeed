@@ -78,9 +78,9 @@
     <Compile Include="UseServiceBusAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Azure.ServiceBus.csproj">
+    <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Messaging.csproj">
       <Project>{659379ef-fdb8-4cb0-b497-eba9376cf140}</Project>
-      <Name>Bcl.Azure.ServiceBus</Name>
+      <Name>Bcl.Messaging</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

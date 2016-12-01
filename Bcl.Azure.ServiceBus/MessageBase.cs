@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Bcl.Azure.ServiceBus
-{
+namespace Bcl.Azure.ServiceBus {
     public class MessageBase
     {
         public Guid MessageID { get; set; }
@@ -17,6 +12,5 @@ namespace Bcl.Azure.ServiceBus
             MessageID = Guid.NewGuid();
             TypeName = this.GetType().Name;
         }
-
     }
 }

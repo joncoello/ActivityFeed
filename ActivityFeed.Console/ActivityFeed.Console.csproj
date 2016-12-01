@@ -85,9 +85,9 @@
       <Project>{F174A372-98C8-473F-BE87-6BCC8E7F823C}</Project>
       <Name>ActivityFeed.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Azure.ServiceBus.csproj">
+    <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Messaging.csproj">
       <Project>{659379ef-fdb8-4cb0-b497-eba9376cf140}</Project>
-      <Name>Bcl.Azure.ServiceBus</Name>
+      <Name>Bcl.Messaging</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

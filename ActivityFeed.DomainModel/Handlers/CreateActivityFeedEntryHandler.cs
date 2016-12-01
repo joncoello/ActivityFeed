@@ -1,20 +1,21 @@
-﻿using ActivityFeed.Domain.Models;
+﻿using ActivityFeed.Domain.Messages;
+using ActivityFeed.Domain.Models;
 using Bcl.Azure.Storage;
 
 namespace ActivityFeed.Domain.Handlers {
     public class CreateActivityFeedEntryHandler 
-        : MessageHandler<CreateActivityFeedEntry> {
+        : MessageHandler<CreateActivityFeed> {
 
-        private IStorage _storage;
+        private IStorageRepository _storage;
 
         public CreateActivityFeedEntryHandler() {
-            _storage = new TableStorage();
+            //_storage = new TableStorage();
         }
 
-        public CreateActivityFeedEntryHandler(IStorage storage) {
+        public CreateActivityFeedEntryHandler(IStorageRepository storage) {
             _storage = storage;
         }
-        public override void Handle(CreateActivityFeedEntry message) {
+        public override void Handle(CreateActivityFeed message) {
             var activityFeedEntry = new ActivityFeedEntry(
                 message.GetType().Name,
                 message.MessageID.ToString()) {

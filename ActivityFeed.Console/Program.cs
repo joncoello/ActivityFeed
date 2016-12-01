@@ -1,8 +1,7 @@
 ﻿using ActivityFeed.Domain.Handlers;
-using ActivityFeed.Domain.Models;
+using ActivityFeed.Domain.Messages;
 using Bcl.Azure.ServiceBus;
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace ActivityFeed.Console {
@@ -15,8 +14,7 @@ namespace ActivityFeed.Console {
         {
             //ToDo
             // load type into app domain - replace with MEF
-            var msg1 = new NewsActivityFeed();
-            var msg2 = new CreateActivityFeedEntry();
+            var msg = new CreateActivityFeed();
 
             //Debugger.Launch();
             //IoC

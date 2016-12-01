@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityFeed.ClientApi", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityFeed.Api", "ActivityFeed.Api\ActivityFeed.Api.csproj", "{2D502894-96A8-4D33-B004-E3DE48268611}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bcl.Azure.ServiceBus", "Bcl.Azure.ServiceBus\Bcl.Azure.ServiceBus.csproj", "{659379EF-FDB8-4CB0-B497-EBA9376CF140}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bcl.Messaging", "Bcl.Azure.ServiceBus\Bcl.Messaging.csproj", "{659379EF-FDB8-4CB0-B497-EBA9376CF140}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bcl.Azure.ServiceBusTests", "Bcl.Azure.ServiceBusTests\Bcl.Azure.ServiceBusTests.csproj", "{55F9805A-8A28-4A08-9849-1F35B8332DDA}"
 EndProject

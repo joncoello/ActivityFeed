@@ -121,9 +121,9 @@
       <Project>{f174a372-98c8-473f-be87-6bcc8e7f823c}</Project>
       <Name>ActivityFeed.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Azure.ServiceBus.csproj">
+    <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Messaging.csproj">
       <Project>{659379ef-fdb8-4cb0-b497-eba9376cf140}</Project>
-      <Name>Bcl.Azure.ServiceBus</Name>
+      <Name>Bcl.Messaging</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

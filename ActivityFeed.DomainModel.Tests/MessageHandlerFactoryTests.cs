@@ -1,5 +1,5 @@
 ﻿using ActivityFeed.Domain.Handlers;
-using ActivityFeed.Domain.Models;
+using ActivityFeed.Domain.Messages;
 using Xunit;
 
 namespace ActivityFeed.DomainModel.Tests {
@@ -14,8 +14,8 @@ namespace ActivityFeed.DomainModel.Tests {
         [Fact]
         public void GetHandlerReturnsIHandlerType() {
             var sut = new MessageHandlerFactory();
-            var handler = sut.GetHandler(new NewsActivityFeed());
-            Assert.Equal(typeof(NewsFeedMessageHandler), handler.GetType());
+            var handler = sut.GetHandler(new CreateActivityFeed());
+            Assert.Equal(typeof(CreateActivityFeedEntryHandler), handler.GetType());
         }
     }
 }
