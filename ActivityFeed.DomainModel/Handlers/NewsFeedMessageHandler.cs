@@ -3,6 +3,9 @@ using Bcl.Azure.Storage;
 
 namespace ActivityFeed.Domain.Handlers {
     public class NewsFeedMessageHandler : MessageHandler<NewsActivityFeed> {
+        //ToDo
+        // this class can be made generic by
+        // using automapper to map different message types
         private IStorage _storage;
 
         public NewsFeedMessageHandler() {
