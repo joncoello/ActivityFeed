@@ -1,23 +1,25 @@
-﻿using Bcl.Azure.Storage;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ActivityFeed.Domain.Models;
+using Bcl.Repositories;
+using System.Linq;
 
 namespace ActivityFeed.Domain.Services {
     public class ActivityFeedService {
+        private IRepository _storageRepository;
 
-        //private TableStorage _storage;
-        private IStorageRepository _storageRepository;
-
-        public ActivityFeedService(IStorageRepository activityRepository) {
-            //_storage = new TableStorage();
-            _storageRepository = activityRepository;
+        public ActivityFeedService() {
+            _storageRepository = new AzureTableStorageRepository();
+        }
+        public ActivityFeedService(IRepository repository) {
+            _storageRepository = repository;
         }
 
         public IEnumerable<ActivityFeedEntry> GetAll() {
-            //var result = _activityRepository.Retrieve<ActivityFeedEntry>();
             var result = _storageRepository.Retrieve();
-            return result;
+            return result.Select(x=>new ActivityFeedEntry {
+                Title = x.Title,
+                Description = x.Description
+            });
         }
-        
     }
 }

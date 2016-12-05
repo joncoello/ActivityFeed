@@ -2,6 +2,7 @@
 using ActivityFeed.Domain.Messages;
 using Bcl.Azure.ServiceBus;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace ActivityFeed.Console {

@@ -1,19 +1,7 @@
-﻿using Bcl.Azure.Storage;
-
-namespace ActivityFeed.Domain.Models {
-    public class ActivityFeedEntry : BaseEntity
+﻿namespace ActivityFeed.Domain.Models {
+    public class ActivityFeedEntry
     {
-
-        public ActivityFeedEntry(string partitionKey, string rowKey)
-            : base(partitionKey, rowKey){
-        }
-
-        public ActivityFeedEntry() {
-        }
-
         public string Description { get; set; }
         public string Title { get; set; }
-
-        public string LongDescription { get; set; }
     }
 }

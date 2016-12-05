@@ -22,7 +22,6 @@ namespace ActivityFeed.IntegrationTests {
             var entry = new CreateActivityFeed {
                 Title = "create feed",
                 Description = "create feed",
-                LongDescription = "very long !!!!"
             };
 
             await client.SendAsync(entry);
@@ -42,8 +41,6 @@ namespace ActivityFeed.IntegrationTests {
                 Assert.Equal(1, activities.Count);
                 Assert.Equal(entry.Title, activities[0].Title);
                 Assert.Equal(entry.Description, activities[0].Description);
-                Assert.Equal(entry.LongDescription, activities[0].LongDescription);
-
             }
         }
     }

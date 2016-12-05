@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F174A372-98C8-473F-BE87-6BCC8E7F823C}</ProjectGuid>
+    <ProjectGuid>{B312753C-F02C-4BB5-A876-92EEF1202A13}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ActivityFeed.Domain</RootNamespace>
-    <AssemblyName>ActivityFeed.Domain</AssemblyName>
+    <RootNamespace>Bcl.Repositories</RootNamespace>
+    <AssemblyName>Bcl.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,6 +46,10 @@
       <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=7.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.7.2.1\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -64,31 +68,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handlers\CreateActivityFeedEntryHandler.cs" />
-    <Compile Include="Handlers\MessageHandler.cs" />
-    <Compile Include="Handlers\IHandler.cs" />
-    <Compile Include="Handlers\MessageHandlerFactory.cs" />
-    <Compile Include="Messages\DeleteActivityFeed.cs" />
-    <Compile Include="Messages\UpdateActivityFeed.cs" />
-    <Compile Include="Models\ActivityFeedEntry.cs" />
-    <Compile Include="Services\ActivityFeedService.cs" />
-    <Compile Include="Messages\CreateActivityFeed.cs" />
+    <Compile Include="ActivityFeedEntity.cs" />
+    <Compile Include="ActivityFeedEntryDto.cs" />
+    <Compile Include="AzureTableStorageRepository.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ActivityFeed.Repositories\Bcl.Azure.Storage.csproj">
+      <Project>{B8A5A47C-E936-4561-B801-78B3350E7FF8}</Project>
+      <Name>Bcl.Azure.Storage</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Messaging.csproj">
-      <Project>{659379EF-FDB8-4CB0-B497-EBA9376CF140}</Project>
-      <Name>Bcl.Messaging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bcl.Repositories\Bcl.Repositories.csproj">
-      <Project>{B312753C-F02C-4BB5-A876-92EEF1202A13}</Project>
-      <Name>Bcl.Repositories</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
