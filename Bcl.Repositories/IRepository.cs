@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Bcl.Repositories.DataTransferObjects;
+using System.Collections.Generic;
 
 namespace Bcl.Repositories {
     public interface IRepository
     {
-        void Add(ActivityFeedEntryDto messsage);
+        void Add(ActivityFeedDto messsage);
         //void Delete(Guid id);
-        IEnumerable<ActivityFeedEntryDto> Retrieve();
+        IEnumerable<ActivityFeedDto> Retrieve();
     }
 }

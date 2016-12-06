@@ -1,15 +1,24 @@
-﻿using Bcl.Azure.Storage;
+﻿using System;
 
-namespace Bcl.Repositories {
-    public class ActivityFeedEntryDto
+namespace Bcl.Repositories.DataTransferObjects {
+
+
+    public class ActivityFeedDto
     {
-        public ActivityFeedEntryDto(string partitionKey, string rowKey) {
+        public ActivityFeedDto(string partitionKey, string rowKey) {
             PartitionKey = partitionKey;
             RowKey = rowKey;
         }
         public string Description { get; set; }
+
+        public Guid Id {
+            get;
+            set;
+        }
+
         public string Title { get; set; }
         internal string PartitionKey { get; private set; }
         internal string RowKey { get; private set; }
     }
+
 }

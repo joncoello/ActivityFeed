@@ -1,6 +1,6 @@
 ﻿using ActivityFeed.Domain.Messages;
-using ActivityFeed.Domain.Models;
 using Bcl.Repositories;
+using Bcl.Repositories.DataTransferObjects;
 
 namespace ActivityFeed.Domain.Handlers {
     public class CreateActivityFeedEntryHandler 
@@ -10,13 +10,14 @@ namespace ActivityFeed.Domain.Handlers {
 
         public CreateActivityFeedEntryHandler() {
             _repository = new AzureTableStorageRepository();
+            //var repo = ioc_container.Resolve<IRepo>();
         }
 
         public CreateActivityFeedEntryHandler(IRepository storage) {
             _repository = storage;
         }
         public override void Handle(CreateActivityFeed message) {
-            var activityFeedEntry = new ActivityFeedEntryDto(
+            var activityFeedEntry = new ActivityFeedDto(
                 message.GetType().Name,
                 message.MessageID.ToString()) {
                 Title = message.Title,

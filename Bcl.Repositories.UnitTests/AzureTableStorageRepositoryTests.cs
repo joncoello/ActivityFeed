@@ -1,4 +1,6 @@
 ﻿using Bcl.Azure.Storage;
+using Bcl.Repositories.DataTransferObjects;
+using Bcl.Repositories.Entities;
 using Microsoft.WindowsAzure.Storage.Table;
 using Moq;
 using System.Collections.Generic;
@@ -23,7 +25,7 @@ namespace Bcl.Repositories.UnitTests {
             moqStorage.Setup(x => x.Add(It.IsAny<TableEntity>())).Verifiable();
 
             var sut = new AzureTableStorageRepository(moqStorage.Object);
-            sut.Add(new ActivityFeedEntryDto("","") {
+            sut.Add(new ActivityFeedDto("","") {
                 Title = "title",
                 Description = "description"
             });

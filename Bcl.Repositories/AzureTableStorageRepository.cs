@@ -1,4 +1,6 @@
 ﻿using Bcl.Azure.Storage;
+using Bcl.Repositories.DataTransferObjects;
+using Bcl.Repositories.Entities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,7 +14,7 @@ namespace Bcl.Repositories {
         public AzureTableStorageRepository() {
             _tableStorage = new TableStorage();
         }
-        public void Add(ActivityFeedEntryDto entity) {
+        public void Add(ActivityFeedDto entity) {
             _tableStorage.Add(new ActivityFeedEntity(
                 entity.PartitionKey, entity.RowKey) {
                     Title = entity.Title,
@@ -20,10 +22,10 @@ namespace Bcl.Repositories {
                 });
         }
 
-        public IEnumerable<ActivityFeedEntryDto> Retrieve() {
+        public IEnumerable<ActivityFeedDto> Retrieve() {
             var entities = _tableStorage.Retrieve<ActivityFeedEntity>();
 
-            var activitiesDto = entities.Select(x => new ActivityFeedEntryDto(
+            var activitiesDto = entities.Select(x => new ActivityFeedDto(
                 x.PartitionKey, x.RowKey){
                     Title = x.Title,
                     Description = x.Description

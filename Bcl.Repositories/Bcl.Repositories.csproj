@@ -68,8 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivityFeedEntity.cs" />
-    <Compile Include="ActivityFeedEntryDto.cs" />
+    <Compile Include="Entities\ActivityFeedEntity.cs" />
+    <Compile Include="DataTransferObjects\ActivityFeedDto.cs" />
     <Compile Include="AzureTableStorageRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
