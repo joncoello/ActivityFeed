@@ -3,7 +3,7 @@
 namespace Bcl.Repositories.DataTransferObjects {
 
 
-    public class ActivityFeedDto
+    public class ActivityFeedDto : IMessage
     {
         public ActivityFeedDto(string partitionKey, string rowKey) {
             PartitionKey = partitionKey;
