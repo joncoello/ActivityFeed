@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bcl.Azure.Storage.UnitTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bcl.Repositories", "Bcl.Repositories\Bcl.Repositories.csproj", "{B312753C-F02C-4BB5-A876-92EEF1202A13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bcl.Repositories.UnitTests", "Bcl.Repositories.UnitTests\Bcl.Repositories.UnitTests.csproj", "{3660988E-E6AB-4FDD-B83C-3E30412C4D79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,10 @@ Global
 		{B312753C-F02C-4BB5-A876-92EEF1202A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B312753C-F02C-4BB5-A876-92EEF1202A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B312753C-F02C-4BB5-A876-92EEF1202A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3660988E-E6AB-4FDD-B83C-3E30412C4D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3660988E-E6AB-4FDD-B83C-3E30412C4D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3660988E-E6AB-4FDD-B83C-3E30412C4D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3660988E-E6AB-4FDD-B83C-3E30412C4D79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

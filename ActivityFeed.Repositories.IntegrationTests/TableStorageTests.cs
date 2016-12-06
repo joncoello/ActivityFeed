@@ -7,7 +7,7 @@ using Xunit;
 namespace Bcl.Azure.Storage.IntegrationTests {
     public class TableStorageTests : IDisposable
     {
-        private BaseEntity _entity;
+        private TableEntity _entity;
         private TableStorage _sut;
         public TableStorageTests() {
             _sut = new TableStorage();
@@ -22,7 +22,7 @@ namespace Bcl.Azure.Storage.IntegrationTests {
 
             var results = _sut.Retrieve<FakeEntity>().ToList();
 
-            Assert.Equal(_entity.RowKey, results[1].RowKey);
+            Assert.Equal(_entity.RowKey, results[0].RowKey);
         }
 
         public void Dispose() {
@@ -30,7 +30,7 @@ namespace Bcl.Azure.Storage.IntegrationTests {
         }
     }
 
-    public class FakeEntity : BaseEntity {
+    public class FakeEntity : TableEntity {
         public FakeEntity(string partitionKey, string rowKey) 
             : base(partitionKey, rowKey) { }
 
