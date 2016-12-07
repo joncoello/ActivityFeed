@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Bcl.Repositories {
-    public class AzureTableStorageRepository : IRepository<ActivityFeedDto> {
+    public class AzureTableStorageRepository : IRepository<ActivityFeedDto>{
         private IStorage _tableStorage;
 
         public AzureTableStorageRepository(IStorage storage) {
