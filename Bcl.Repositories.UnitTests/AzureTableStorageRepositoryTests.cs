@@ -1,13 +1,14 @@
-﻿using Bcl.Azure.Storage;
-using Bcl.Repositories.DataTransferObjects;
-using Bcl.Repositories.Entities;
+﻿using ActivityFeed.Domain.Models;
+using ActivityFeed.Repositories.Entities;
+using Bcl.Azure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace Bcl.Repositories.UnitTests {
+namespace ActivityFeed.Repositories.UnitTests {
     public class AzureTableStorageRepositoryTests
     {
         [Fact]
@@ -25,7 +26,8 @@ namespace Bcl.Repositories.UnitTests {
             moqStorage.Setup(x => x.Add(It.IsAny<TableEntity>())).Verifiable();
 
             var sut = new AzureTableStorageRepository(moqStorage.Object);
-            sut.Add(new ActivityFeedDto("","") {
+            sut.Add(new ActivityFeedEntry{
+                MessageID = new Guid(),
                 Title = "title",
                 Description = "description"
             });

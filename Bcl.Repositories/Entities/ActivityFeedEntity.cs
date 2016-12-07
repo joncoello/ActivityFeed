@@ -1,9 +1,10 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
+using System;
 
-namespace Bcl.Repositories.Entities {
+namespace ActivityFeed.Repositories.Entities {
     public class ActivityFeedEntity : TableEntity {
-        public ActivityFeedEntity(string partitionKey, string rowKey)
-            : base(partitionKey, rowKey){
+        public ActivityFeedEntity(string partitionKey)
+            : base(partitionKey, Guid.NewGuid().ToString()){
         }
         public ActivityFeedEntity() {
         }

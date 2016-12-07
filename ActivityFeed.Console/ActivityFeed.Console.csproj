@@ -89,6 +89,10 @@
       <Project>{659379ef-fdb8-4cb0-b497-eba9376cf140}</Project>
       <Name>Bcl.Messaging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bcl.Repositories\ActivityFeed.Repositories.csproj">
+      <Project>{B312753C-F02C-4BB5-A876-92EEF1202A13}</Project>
+      <Name>ActivityFeed.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

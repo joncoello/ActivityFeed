@@ -68,6 +68,7 @@
     <Compile Include="Handlers\MessageHandler.cs" />
     <Compile Include="Handlers\IHandler.cs" />
     <Compile Include="Handlers\MessageHandlerFactory.cs" />
+    <Compile Include="Repositories\IActivityFeedRepository.cs" />
     <Compile Include="Messages\DeleteActivityFeed.cs" />
     <Compile Include="Messages\UpdateActivityFeed.cs" />
     <Compile Include="Models\ActivityFeedEntry.cs" />
@@ -82,10 +83,6 @@
     <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Messaging.csproj">
       <Project>{659379EF-FDB8-4CB0-B497-EBA9376CF140}</Project>
       <Name>Bcl.Messaging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bcl.Repositories\Bcl.Repositories.csproj">
-      <Project>{B312753C-F02C-4BB5-A876-92EEF1202A13}</Project>
-      <Name>Bcl.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -1,5 +1,6 @@
 ﻿using ActivityFeed.Domain.Handlers;
 using ActivityFeed.Domain.Messages;
+using ActivityFeed.Repositories;
 using Bcl.Azure.ServiceBus;
 using System;
 using System.Diagnostics;
@@ -41,7 +42,7 @@ namespace ActivityFeed.Console {
                     }
 
                     try {
-                        var handler = new MessageHandlerFactory()
+                        var handler = new MessageHandlerFactory(new AzureTableStorageRepository())
                                         .GetHandler(message);
                         handler.Handle(message);
                     }

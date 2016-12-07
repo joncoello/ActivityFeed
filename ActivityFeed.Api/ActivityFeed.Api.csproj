@@ -132,6 +132,10 @@
       <Project>{F174A372-98C8-473F-BE87-6BCC8E7F823C}</Project>
       <Name>ActivityFeed.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bcl.Repositories\ActivityFeed.Repositories.csproj">
+      <Project>{B312753C-F02C-4BB5-A876-92EEF1202A13}</Project>
+      <Name>ActivityFeed.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
