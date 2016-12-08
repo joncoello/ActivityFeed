@@ -11,7 +11,7 @@ namespace ActivityFeed.ApiTests
         [Fact]
         public void API_HelloWorld()
         {
-            var baseAddress = "http://localhost:6767";
+            var baseAddress = "http://localhost:6768";
             using (WebApp.Start<Startup>(baseAddress))
             {
                 var httpClient = new HttpClient();

@@ -5,36 +5,37 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 
 namespace Bcl.Azure.ServiceBusTests {
-    public class QueueClientTests : IDisposable
+    public class QueueClientTests
     {
-        private const string QUEUE_NAME = "activityfeed";
-        private CCHQueueClient _sut;
-
-        public QueueClientTests() {
-            _sut = new CCHQueueClient(QUEUE_NAME);
-        }
-        
+       
         [Fact]
         public async Task QueueClient_EnqueueAsync()
         {
+            var sut = new CCHQueueClient("activityfeed_1");
             var msg = new MockMessage();
-            await _sut.EnqueueAsync(msg);
+            await sut.EnqueueAsync(msg);
         }
 
         [Fact]
         public async Task QueueClient_DequeueAysncEmptyQueue()
         {
-            var msg = await _sut.DequeueAsync(TimeSpan.FromSeconds(1));
+            var sut = new CCHQueueClient("activityfeed_2");
+            await sut.ClearQueueAsync();
+
+            var msg = await sut.DequeueAsync(TimeSpan.FromSeconds(1));
             Assert.Null(msg);
         }
 
         [Fact]
         public async Task QueueClient_EnqueueAndDequeue()
         {
+            var sut = new CCHQueueClient("activityfeed_3");
+            await sut.ClearQueueAsync();
+            
             var msg = new MockMessage();
-            await _sut.EnqueueAsync(msg);
+            await sut.EnqueueAsync(msg);
 
-            var msgOut = await _sut.DequeueAsync(TimeSpan.FromSeconds(1));
+            var msgOut = await sut.DequeueAsync(TimeSpan.FromSeconds(1));
 
             Assert.Equal(msgOut.MessageID, msg.MessageID);
 
@@ -43,15 +44,19 @@ namespace Bcl.Azure.ServiceBusTests {
         [Fact]
         public async Task QueueClient_EnqueueMultiAndDequeueFirst()
         {
+
+            var sut = new CCHQueueClient("activityfeed_4");
+            await sut.ClearQueueAsync();
+
             var message1 = new MockMessage();
             var message2 = new MockMessage();
             var message3 = new MockMessage();
 
-            await _sut.EnqueueAsync(message1);
-            await _sut.EnqueueAsync(message2);
-            await _sut.EnqueueAsync(message3);
+            await sut.EnqueueAsync(message1);
+            await sut.EnqueueAsync(message2);
+            await sut.EnqueueAsync(message3);
 
-            var dequeuedMessage = await _sut.DequeueAsync(TimeSpan.FromSeconds(1));
+            var dequeuedMessage = await sut.DequeueAsync(TimeSpan.FromSeconds(1));
 
             Assert.Equal(message1.MessageID, dequeuedMessage.MessageID);
         }
@@ -59,24 +64,24 @@ namespace Bcl.Azure.ServiceBusTests {
         [Fact]
         public async Task QueueClient_EnqueueObjectAndDequeue()
         {
+            var sut = new CCHQueueClient("activityfeed_5");
+            await sut.ClearQueueAsync();
+
             var msg = new MockMessage()
             {
                 Description = "test"
             };
 
-            await _sut.EnqueueAsync(msg);
+            await sut.EnqueueAsync(msg);
 
-            var dequeuedMessage = (MockMessage)await _sut.DequeueAsync(
+            var dequeuedMessage = (MockMessage)await sut.DequeueAsync(
                 TimeSpan.FromSeconds(1));
 
             Assert.Equal(msg.MessageID, dequeuedMessage.MessageID);
             Assert.Equal(msg.Description, dequeuedMessage.Description);
 
         }
-
-        public async void Dispose() {
-             await _sut.ClearQueueAsync();
-        }
+        
     }
 
 }
