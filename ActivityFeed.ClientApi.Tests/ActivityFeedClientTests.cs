@@ -11,7 +11,7 @@ namespace ActivityFeed.ClientApi.IntegrationTests {
         }
 
         [Fact]
-        public async Task EnqueueAndDequeue() {
+        public async Task ClientApi_EnqueueAndDequeue() {
             var message = new CreateActivityFeed {
                 Title = "Test activity",
                 Description = "Test description"

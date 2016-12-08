@@ -15,7 +15,7 @@ namespace Bcl.Azure.Storage.IntegrationTests {
 
         }
         [Fact]
-        public void AddAndRetrieve() {
+        public void TableStorageTests_AddAndRetrieve() {
             _sut.Add(_entity);
 
             Thread.Sleep(5000);

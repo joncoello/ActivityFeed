@@ -7,7 +7,7 @@ using Xunit;
 namespace ActivityFeed.DomainModel.Tests {
     public class MessageHandlerFactoryTests {
         [Fact]
-        public void CanCreate() {
+        public void MessageHandlerFactory_CanCreate() {
             var mockRepo = new Mock<IActivityFeedRepository>();
             var sut = new MessageHandlerFactory(mockRepo.Object);
 
@@ -15,7 +15,7 @@ namespace ActivityFeed.DomainModel.Tests {
         }
 
         [Fact]
-        public void GetHandlerReturnsIHandlerType() {
+        public void MessageHandlerFactory_GetHandlerReturnsIHandlerType() {
             var mockRepo = new Mock<IActivityFeedRepository>();
             var sut = new MessageHandlerFactory(mockRepo.Object);
 

@@ -17,7 +17,7 @@ namespace ActivityFeed.IntegrationTests {
     {
 
         [Fact]
-        public async Task SendCreateActivityFeedToClientApiAndSeeActivityThroughAPI() {
+        public async Task IntegrationTests_HappyPath() {
             var client = new ActivityFeedClient();
             var entry = new CreateActivityFeed {
                 Title = "create feed",

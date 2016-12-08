@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="6a8b4fb0-b573-4a90-95a2-44457dd18cd5" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="4e4c95dd-620d-4997-9ccc-cde4bffcdcef" name="ActivityFeed.Api">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="7cb8a9a0-23fd-4579-9690-93eaf1909215" direction="Forward">
+          <layerMoniker Id="01a9f2d6-57e7-438e-bfd1-bf6f5f0e2601" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="c9af4bfa-f9ba-4448-b15f-6fa653267a09" direction="Forward">
+          <layerMoniker Id="68195687-f1dc-4b2b-9778-21260bb5a147" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="391e05b6-ef6d-4954-a8f8-6c931e32608a" name="ActivityFeed.Api">
+          <ArtifactNode Label="ActivityFeed.Api" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/visual studio 2015/Projects/ActivityFeed/ActivityFeed.Api/ActivityFeed.Api.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ActivityFeed.Api)" Label="ActivityFeed.Api.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="13a17da9-4cf8-46c0-87cd-58f56ed99e66" name="ActivityFeed.ClientApi">
+      <references>
+        <reference Id="fa0fa463-092d-4cc5-94ed-08a2540a857d" name="ActivityFeed.ClientApi">
+          <ArtifactNode Label="ActivityFeed.ClientApi" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/visual studio 2015/Projects/ActivityFeed/ActivityFeed.ClientApi/ActivityFeed.ClientApi.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ActivityFeed.ClientApi)" Label="ActivityFeed.ClientApi.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="046358d7-5037-439b-94c2-b1d04f592797" name="ActivityFeed.Console">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="d638fede-ec1f-4a90-a717-5a926840d470" direction="Forward">
+          <layerMoniker Id="01a9f2d6-57e7-438e-bfd1-bf6f5f0e2601" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="3d901407-4815-417b-954a-600fcb4b1ee2" direction="Forward">
+          <layerMoniker Id="68195687-f1dc-4b2b-9778-21260bb5a147" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="6b0b9463-295c-4b4d-becb-c25cfe1aa159" name="ActivityFeed.Console">
+          <ArtifactNode Label="ActivityFeed.Console" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/visual studio 2015/Projects/ActivityFeed/ActivityFeed.Console/ActivityFeed.Console.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ActivityFeed.Console)" Label="ActivityFeed.Console.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="01a9f2d6-57e7-438e-bfd1-bf6f5f0e2601" name="ActivityFeed.Domain">
+      <references>
+        <reference Id="0cd5f720-7bf5-4263-92c7-adf0db4da2b5" name="ActivityFeed.Domain">
+          <ArtifactNode Label="ActivityFeed.Domain" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/visual studio 2015/Projects/ActivityFeed/ActivityFeed.DomainModel/ActivityFeed.Domain.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ActivityFeed.Domain)" Label="ActivityFeed.Domain.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="68195687-f1dc-4b2b-9778-21260bb5a147" name="ActivityFeed.Repositories">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="228bace0-3330-4e85-b1b8-f62d51c50213" direction="Forward">
+          <layerMoniker Id="01a9f2d6-57e7-438e-bfd1-bf6f5f0e2601" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="9642948d-8f6c-4b1a-8a6b-d6cdc8235769" name="ActivityFeed.Repositories">
+          <ArtifactNode Label="ActivityFeed.Repositories" Category="CodeSchema_Project" Id="(Assembly=&quot;$(PersonalUri)/visual studio 2015/Projects/ActivityFeed/Bcl.Repositories/ActivityFeed.Repositories.csproj&quot;)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=ActivityFeed.Repositories)" Label="ActivityFeed.Repositories.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>

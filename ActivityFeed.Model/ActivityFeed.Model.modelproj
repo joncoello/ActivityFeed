@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{a9e40f26-22c9-40cd-a05b-b3f94357c28a}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>ActivityFeed.Model</Name>
+    <RootNamespace>ActivityFeed.Model</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\ActivityFeed.Model.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Validate Include="LayerDiagram.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="LayerDiagram.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagram.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="LayerDiagram.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>LayerDiagram.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ActivityFeed.Api\ActivityFeed.Api.csproj">
+      <Name>ActivityFeed.Api</Name>
+      <Project>{2d502894-96a8-4d33-b004-e3de48268611}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ActivityFeed.ClientApi\ActivityFeed.ClientApi.csproj">
+      <Name>ActivityFeed.ClientApi</Name>
+      <Project>{24b6fd68-10ca-4385-9a3f-b9926547dc36}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ActivityFeed.Console\ActivityFeed.Console.csproj">
+      <Name>ActivityFeed.Console</Name>
+      <Project>{6c781ab1-6ef5-4e30-873c-1508b224230c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ActivityFeed.DomainModel\ActivityFeed.Domain.csproj">
+      <Name>ActivityFeed.Domain</Name>
+      <Project>{f174a372-98c8-473f-be87-6bcc8e7f823c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Bcl.Repositories\ActivityFeed.Repositories.csproj">
+      <Name>ActivityFeed.Repositories</Name>
+      <Project>{b312753c-f02c-4bb5-a876-92eef1202a13}</Project>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

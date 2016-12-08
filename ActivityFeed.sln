@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityFeed.IntegrationTests", "ActivityFeed.IntegrationTests\ActivityFeed.IntegrationTests.csproj", "{6F79E958-DFF0-4341-B7D3-957903B3DFFD}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -39,6 +39,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domains", "Domains", "{DA7FA7CF-558B-40E7-8BA6-061E9BE96958}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaseClassLibraries", "BaseClassLibraries", "{68F55CA4-EBCC-4EB2-9A07-E9CDC0421FAA}"
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ActivityFeed.Model", "ActivityFeed.Model\ActivityFeed.Model.modelproj", "{A9E40F26-22C9-40CD-A05B-B3F94357C28A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -102,6 +104,10 @@ Global
 		{3660988E-E6AB-4FDD-B83C-3E30412C4D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3660988E-E6AB-4FDD-B83C-3E30412C4D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3660988E-E6AB-4FDD-B83C-3E30412C4D79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9E40F26-22C9-40CD-A05B-B3F94357C28A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9E40F26-22C9-40CD-A05B-B3F94357C28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9E40F26-22C9-40CD-A05B-B3F94357C28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9E40F26-22C9-40CD-A05B-B3F94357C28A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
