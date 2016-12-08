@@ -34,6 +34,7 @@ namespace ActivityFeed.Repositories.UnitTests {
             moqStorage.Verify();
         }
 
+        // abstracting storage from table storage - not sure this adds much
         [Fact]
         public void AzureTableStorageRepository_CanRetrieve() {
             var moqStorage = new Mock<IStorage>();
