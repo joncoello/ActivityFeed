@@ -39,9 +39,9 @@ namespace ActivityFeed.Repositories.UnitTests {
         public void AzureTableStorageRepository_CanRetrieve() {
             var moqStorage = new Mock<IStorage>();
             IEnumerable<ActivityFeedEntity> fakeEntities = new List<ActivityFeedEntity> {    
-                    new ActivityFeedEntity { Title = "T1", Description="D1"},
-                    new ActivityFeedEntity { Title = "T2", Description="D2"},
-                    new ActivityFeedEntity { Title = "T3", Description="D3"},
+                    new ActivityFeedEntity { RowKey = Guid.NewGuid().ToString(), Title = "T1", Description="D1"},
+                    new ActivityFeedEntity { RowKey = Guid.NewGuid().ToString(),Title = "T2", Description="D2"},
+                    new ActivityFeedEntity { RowKey = Guid.NewGuid().ToString(),Title = "T3", Description="D3"},
                 };
             moqStorage.Setup(x => x.Retrieve<ActivityFeedEntity>())
                 .Returns(fakeEntities);
