@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bcl.Messaging", "Bcl.Azure.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bcl.Azure.ServiceBusTests", "Bcl.Azure.ServiceBusTests\Bcl.Azure.ServiceBusTests.csproj", "{55F9805A-8A28-4A08-9849-1F35B8332DDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityFeed.Console", "ActivityFeed.Console\ActivityFeed.Console.csproj", "{6C781AB1-6EF5-4E30-873C-1508B224230C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityFeed.WorkerConsoleHost", "ActivityFeed.Console\ActivityFeed.WorkerConsoleHost.csproj", "{6C781AB1-6EF5-4E30-873C-1508B224230C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActivityFeed.ClientApi.IntegrationTests", "ActivityFeed.ClientApi.Tests\ActivityFeed.ClientApi.IntegrationTests.csproj", "{61805F34-404C-4622-94BA-18358037758D}"
 EndProject

@@ -8,8 +8,8 @@
     <ProjectGuid>{6C781AB1-6EF5-4E30-873C-1508B224230C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ActivityFeed.Console</RootNamespace>
-    <AssemblyName>ActivityFeed.Console</AssemblyName>
+    <RootNamespace>ActivityFeed.WorkerConsoleHost</RootNamespace>
+    <AssemblyName>ActivityFeed.WorkerConsoleHost</AssemblyName>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <RoleType>Worker</RoleType>

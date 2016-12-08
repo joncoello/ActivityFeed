@@ -113,9 +113,9 @@
       <Project>{24b6fd68-10ca-4385-9a3f-b9926547dc36}</Project>
       <Name>ActivityFeed.ClientApi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ActivityFeed.Console\ActivityFeed.Console.csproj">
+    <ProjectReference Include="..\ActivityFeed.Console\ActivityFeed.WorkerConsoleHost.csproj">
       <Project>{6c781ab1-6ef5-4e30-873c-1508b224230c}</Project>
-      <Name>ActivityFeed.Console</Name>
+      <Name>ActivityFeed.WorkerConsoleHost</Name>
     </ProjectReference>
     <ProjectReference Include="..\ActivityFeed.DomainModel\ActivityFeed.Domain.csproj">
       <Project>{f174a372-98c8-473f-be87-6bcc8e7f823c}</Project>

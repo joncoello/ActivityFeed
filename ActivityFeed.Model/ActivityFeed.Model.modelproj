@@ -49,8 +49,8 @@
       <Name>ActivityFeed.ClientApi</Name>
       <Project>{24b6fd68-10ca-4385-9a3f-b9926547dc36}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\ActivityFeed.Console\ActivityFeed.Console.csproj">
-      <Name>ActivityFeed.Console</Name>
+    <ProjectReference Include="..\ActivityFeed.Console\ActivityFeed.WorkerConsoleHost.csproj">
+      <Name>ActivityFeed.WorkerConsoleHost</Name>
       <Project>{6c781ab1-6ef5-4e30-873c-1508b224230c}</Project>
     </ProjectReference>
     <ProjectReference Include="..\ActivityFeed.DomainModel\ActivityFeed.Domain.csproj">

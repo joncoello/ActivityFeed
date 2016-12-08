@@ -6,7 +6,8 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace ActivityFeed.Console {
+namespace ActivityFeed.WorkerConsoleHost
+{
     public class Program
     {
         private static IQueue _queueClient;
@@ -21,27 +22,34 @@ namespace ActivityFeed.Console {
             //Debugger.Launch();
             //IoC
             _queueClient = new CCHQueueClient("ActivityFeed");
-            Task.Run(async () => {
+            Task.Run(async () =>
+            {
                 MessageBase message = null;
-                while (true) {
-                    try {
+                while (true)
+                {
+                    try
+                    {
                         message = await _queueClient.DequeueAsync(
                                         TimeSpan.FromSeconds(ServerWaitTimeInSeconds));
                     }
-                    catch (ArgumentNullException e) {
+                    catch (ArgumentNullException e)
+                    {
                         //log error
                         continue;
                     }
 
-                    if (message == null) {
+                    if (message == null)
+                    {
 
-                        if (args.Length > 0 && args[0] == "-exitNoMessage") {
+                        if (args.Length > 0 && args[0] == "-exitNoMessage")
+                        {
                             return;
                         }
                         continue;
                     }
 
-                    try {
+                    try
+                    {
                         var handler = new MessageHandlerFactory(new AzureTableStorageRepository())
                                         .GetHandler(message);
                         handler.Handle(message);
@@ -52,8 +60,8 @@ namespace ActivityFeed.Console {
                     // dead letter???
                     // log it
                     // move on
-                    catch (ArgumentNullException) {}
-                    catch (ArgumentException) {}
+                    catch (ArgumentNullException) { }
+                    catch (ArgumentException) { }
                 }
             }).Wait();
         }
