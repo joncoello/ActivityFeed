@@ -84,6 +84,10 @@
       <Project>{659379EF-FDB8-4CB0-B497-EBA9376CF140}</Project>
       <Name>Bcl.Messaging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bcl.Core\Bcl.Core.csproj">
+      <Project>{4c85cb42-404a-4cf0-b4ca-c654ea435aff}</Project>
+      <Name>Bcl.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

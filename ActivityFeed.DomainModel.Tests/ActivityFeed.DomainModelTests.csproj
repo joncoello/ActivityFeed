@@ -80,9 +80,21 @@
       <Project>{F174A372-98C8-473F-BE87-6BCC8E7F823C}</Project>
       <Name>ActivityFeed.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ActivityFeed.Repositories\Bcl.Azure.Storage.csproj">
+      <Project>{b8a5a47c-e936-4561-b801-78b3350e7ff8}</Project>
+      <Name>Bcl.Azure.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bcl.Azure.ServiceBus\Bcl.Messaging.csproj">
       <Project>{659379EF-FDB8-4CB0-B497-EBA9376CF140}</Project>
       <Name>Bcl.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bcl.Core\Bcl.Core.csproj">
+      <Project>{4c85cb42-404a-4cf0-b4ca-c654ea435aff}</Project>
+      <Name>Bcl.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bcl.Repositories\ActivityFeed.Repositories.csproj">
+      <Project>{b312753c-f02c-4bb5-a876-92eef1202a13}</Project>
+      <Name>ActivityFeed.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

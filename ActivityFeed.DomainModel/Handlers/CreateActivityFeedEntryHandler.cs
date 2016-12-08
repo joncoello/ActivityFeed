@@ -3,8 +3,8 @@ using ActivityFeed.Domain.Models;
 using ActivityFeed.Domain.Repositories;
 
 namespace ActivityFeed.Domain.Handlers {
-    public class CreateActivityFeedEntryHandler 
-        : MessageHandler<CreateActivityFeed> {
+
+    public class CreateActivityFeedEntryHandler : MessageHandler<CreateActivityFeed> {
 
         private IActivityFeedRepository _repository;
 

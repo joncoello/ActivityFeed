@@ -1,7 +1,9 @@
 ﻿using ActivityFeed.Domain.Handlers;
 using ActivityFeed.Domain.Messages;
+using ActivityFeed.Domain.Repositories;
 using ActivityFeed.Repositories;
 using Bcl.Azure.ServiceBus;
+using Bcl.Core.IoC;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -15,6 +17,11 @@ namespace ActivityFeed.WorkerConsoleHost
 
         public static void Main(string[] args)
         {
+
+            var containerFactory = new DependencyContainerFactory();
+            var container = containerFactory.Create();
+            container.RegisterType<IActivityFeedRepository, AzureTableStorageRepository>();
+
             //ToDo
             // load type into app domain - replace with MEF
             var msg = new CreateActivityFeed();
@@ -50,7 +57,8 @@ namespace ActivityFeed.WorkerConsoleHost
 
                     try
                     {
-                        var handler = new MessageHandlerFactory(new AzureTableStorageRepository())
+
+                        var handler = new MessageHandlerFactory(container)
                                         .GetHandler(message);
                         handler.Handle(message);
                     }
